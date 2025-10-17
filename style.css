@@ -1,0 +1,684 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+
+/*
+=================================
+1. Estilos Globais e Variáveis
+=================================
+*/
+:root {
+    /* Cores */
+    --cor-principal: #FFC0CB; /* Rosa Pastel */
+    --cor-secundaria: #8B4513; /* Marrom Sela */
+    --cor-texto: #333;
+    --cor-fundo: #FFF8E7; /* Bege Claro */
+
+    /* Fontes */
+    --fonte-titulos: 'Dancing Script', cursive;
+    --fonte-corpo: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    background-color: var(--cor-fundo);
+}
+
+/*
+=================================
+2. Estilos do Header
+=================================
+*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--cor-fundo);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-family: var(--fonte-titulos);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cor-secundaria);
+    text-decoration: none;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--cor-principal);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.menu-hamburguer {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-hamburguer .linha {
+    width: 25px;
+    height: 3px;
+    background-color: var(--cor-secundaria);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Responsividade do Header --- */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--cor-fundo);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .nav-menu.ativo {
+        display: block;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-menu li {
+        padding: 1rem 0;
+        border-top: 1px solid #eee;
+    }
+
+    .menu-hamburguer {
+        display: flex;
+    }
+    
+    .menu-hamburguer.ativo .linha:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-hamburguer.ativo .linha:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-hamburguer.ativo .linha:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
+
+/*
+=================================
+3. Estilos da Seção Hero (Início)
+=================================
+*/
+.hero-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100vh;
+    padding: 0 4rem;
+    background-image: url('assets/BannerCris.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.hero-image-mobile {
+    display: none;
+}
+
+.hero-content {
+    flex-basis: 50%;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title, .hero-description {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-title {
+    font-family: var(--fonte-titulos);
+    font-size: 3.5rem;
+    color: var(--cor-secundaria);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--cor-texto);
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-fundo);
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.cta-button:hover {
+    background-color: #a0522d;
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Responsividade da Seção Hero --- */
+@media (max-width: 768px) {
+    .hero-section {
+        background-image: none;
+        background-color: var(--cor-fundo);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+        padding: 2rem 0;
+    }
+
+    .hero-image-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .hero-image-mobile img {
+        transform: rotate(90deg);
+        max-height: 90vw; 
+        width: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .hero-content {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        padding: 1.5rem;
+        background-color: rgba(255, 248, 231, 0.8);
+        backdrop-filter: blur(4px);
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        color: var(--cor-texto);
+    }
+
+    .hero-title, .hero-description {
+        text-shadow: none;
+    }
+}
+
+/*
+=================================
+4. Estilos da Seção Sobre
+=================================
+*/
+.about-section {
+    background-color: var(--cor-fundo);
+    padding: 6rem 2rem;
+    overflow: hidden;
+}
+
+.about-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; 
+    gap: 4rem;
+}
+
+.about-content {
+    flex: 1.2;
+    max-width: 550px;
+}
+
+.bio-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--cor-texto);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.about-image-wrapper {
+    flex: 0.8;
+}
+
+.about-image-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 0; 
+    box-shadow: none; 
+    transition: transform 0.4s ease;
+    display: block;
+    border-bottom: 4px solid var(--cor-principal);
+}
+
+.about-image-wrapper img:hover {
+    transform: none;
+}
+
+.section-title {
+    color: var(--cor-secundaria);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Responsividade da Seção Sobre --- */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .about-section .container {
+        flex-direction: column-reverse; 
+        gap: 2.5rem;
+        align-items: center; 
+    }
+
+    .about-content {
+        text-align: center;
+    }
+}
+
+/*
+=================================
+5. Estilos da Seção de Serviços
+=================================
+*/
+.services-section {
+    padding: 6rem 2rem;
+    background-color: #FFFFFF;
+    text-align: center;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="15" cy="20" r="3" fill="%23FFC0CB"/><rect x="70" y="30" width="6" height="6" transform="rotate(20 73 33)" fill="%238B4513" opacity="0.7"/><circle cx="80" cy="85" r="4" fill="%23FFC0CB" opacity="0.8"/><rect x="10" y="80" width="8" height="4" transform="rotate(-15 14 82)" fill="%238B4513"/><circle cx="50" cy="50" r="2" fill="%23FFC0CB"/></svg>');
+    background-repeat: repeat;
+    background-size: 150px;
+}
+
+.services-grid {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: stretch; 
+    gap: 2rem;
+    flex-wrap: wrap; 
+}
+
+.service-card {
+    background-color: #FFFFFF;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04), 0 10px 40px rgba(139, 69, 19, 0.08);
+    max-width: 450px;
+    flex: 1; 
+    min-width: 300px; 
+    transition: all 0.3s ease-in-out;
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06), 0 15px 50px rgba(139, 69, 19, 0.12);
+    border-color: var(--cor-principal);
+}
+
+.card-icon {
+    font-size: 3rem; 
+    color: var(--cor-secundaria); 
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-family: var(--fonte-titulos);
+    font-size: 2.2rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 1rem;
+}
+
+.card-description p {
+    color: var(--cor-texto);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.card-description ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--cor-texto);
+    text-align: left;
+}
+
+.card-description ul li {
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 25px;
+}
+
+.card-description ul li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: var(--cor-principal);
+    font-weight: bold;
+}
+
+/*
+=================================
+6. Estilos da Seção da Galeria (Fotos MAIORES)
+=================================
+*/
+.gallery-section {
+    padding: 4rem 0 6rem 0;
+    background-color: #FFFFFF;
+    text-align: center;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="15" cy="20" r="3" fill="%23FFC0CB"/><rect x="70" y="30" width="6" height="6" transform="rotate(20 73 33)" fill="%238B4513" opacity="0.7"/><circle cx="80" cy="85" r="4" fill="%23FFC0CB" opacity="0.8"/><rect x="10" y="80" width="8" height="4" transform="rotate(-15 14 82)" fill="%238B4513"/><circle cx="50" cy="50" r="2" fill="%23FFC0CB"/></svg>');
+    background-repeat: repeat;
+    background-size: 150px;
+}
+
+.scroller-container {
+    margin-top: 3rem;
+    max-width: 100%;
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg, transparent, white 15%, white 85%, transparent);
+    mask: linear-gradient(90deg, transparent, white 15%, white 85%, transparent);
+}
+
+.scroller-inner {
+    display: flex;
+    width: max-content;
+    gap: 0;
+    animation: scroll 120s linear infinite;
+}
+
+.scroller-container:hover .scroller-inner {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.scroller-inner img {
+    /* ALTERAÇÃO AQUI: Altura aumentada de 250px para 350px */
+    height: 350px; 
+    width: auto;
+    flex-shrink: 0;
+}
+
+/* Também vamos ajustar a altura no mobile para não ficar grande demais */
+@media (max-width: 768px) {
+    .scroller-inner img {
+        height: 200px; /* Aumentado de 160px para 200px no mobile */
+    }
+}
+
+/*
+=================================
+7. Estilos da Seção de Contato
+=================================
+*/
+.contact-section .container {
+    text-align: center;
+}
+
+.contact-section {
+    padding: 6rem 2rem;
+    background-color: #FFFFFF;
+}
+
+.contact-wrapper {
+    max-width: 900px;
+    margin: 3rem auto 0 auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap; 
+    margin-bottom: 4rem; 
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px; 
+    text-decoration: none;
+    color: var(--cor-secundaria);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-8px);
+}
+
+.social-link i {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--cor-fundo);
+    border: 3px solid var(--cor-fundo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.social-link span {
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover i {
+    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.15);
+}
+
+.social-link.whatsapp:hover i { color: #25D366; border-color: #25D366; }
+.social-link.whatsapp:hover span { color: #25D366; }
+.social-link.facebook:hover i { color: #1877F2; border-color: #1877F2; }
+.social-link.facebook:hover span { color: #1877F2; }
+.social-link.instagram:hover i { color: #E4405F; border-color: #E4405F; }
+.social-link.instagram:hover span { color: #E4405F; }
+.social-link.linkedin:hover i { color: #0A66C2; border-color: #0A66C2; }
+.social-link.linkedin:hover span { color: #0A66C2; }
+
+.form-title {
+    font-family: var(--fonte-titulos);
+    color: var(--cor-secundaria);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    text-align: center;
+    color: var(--cor-texto);
+    margin-bottom: 2.5rem;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--cor-texto);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cor-principal);
+    box-shadow: 0 0 0 3px rgba(255, 192, 203, 0.5); 
+}
+
+.form-button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .social-links {
+        gap: 1rem;
+        justify-content: space-around; 
+    }
+
+    .social-link {
+        width: calc(50% - 1rem); 
+    }
+}
+
+/*
+=================================
+8. Estilos Finais de Títulos e Textos
+=================================
+*/
+.intro-text {
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #D98695;
+    margin-bottom: 0.5rem;
+    text-shadow: none;
+}
+
+.services-section .section-title,
+.gallery-section .section-title,
+.contact-section .section-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 1px;
+}
+
+.about-section .section-title {
+    font-family: var(--fonte-titulos);
+    font-size: 3rem;
+    letter-spacing: normal; 
+    text-transform: none;
+}
+
+/*
+=================================
+9. Estilos do Rodapé (Footer) - (Com Cores do Header)
+=================================
+*/
+footer {
+    /* ALTERAÇÃO: Fundo bege claro, igual ao header */
+    background-color: var(--cor-fundo); 
+    padding: 2rem 1rem;
+    text-align: center;
+    /* ALTERAÇÃO: Sombra na parte de CIMA para espelhar o header */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    /* ALTERAÇÃO: Cor do texto padrão, para ser legível no fundo claro */
+    color: var(--cor-texto); 
+}
+
+footer a {
+    /* ALTERAÇÃO: Cor marrom, para destacar como o logo no header */
+    color: var(--cor-secundaria); 
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    /* Mantido: Efeito rosa ao passar o mouse */
+    color: var(--cor-principal); 
+}
