@@ -682,3 +682,76 @@ footer a:hover {
     /* Mantido: Efeito rosa ao passar o mouse */
     color: var(--cor-principal); 
 }
+
+/*
+=================================
+11. Estilos SweetAlert2 Personalizados (Aprimorados)
+=================================
+*/
+.swal2-custom-popup {
+    border-radius: 15px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    background-color: var(--cor-fundo) !important; /* Fundo bege claro */
+    color: var(--cor-texto) !important; /* Texto escuro */
+    border: 1px solid var(--cor-principal) !important; /* Borda sutil */
+}
+
+.swal2-custom-title {
+    font-family: var(--fonte-titulos) !important; /* Dancing Script */
+    color: var(--cor-secundaria) !important; /* Marrom Sela */
+    font-size: 2.5rem !important; /* Tamanho ajustado */
+    margin-bottom: 1rem !important;
+}
+
+.swal2-html-container { /* Estilo para o texto principal */
+    font-family: var(--fonte-corpo) !important; /* Poppins */
+    color: var(--cor-texto) !important;
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important; /* Espaço antes do botão */
+}
+
+.swal2-custom-button {
+    background-color: var(--cor-secundaria) !important; /* Botão marrom */
+    color: var(--cor-fundo) !important; /* Texto do botão bege claro */
+    font-family: var(--fonte-corpo) !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    padding: 0.8rem 2rem !important;
+    border-radius: 50px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3) !important;
+    border: none !important;
+    display: inline-flex !important; /* Para centralizar texto e ícone se houver */
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+.swal2-custom-button:hover {
+    background-color: #a0522d !important; /* Marrom mais escuro no hover */
+    transform: translateY(-2px) !important;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Estilo para o botão de fechar (o 'X') */
+.swal2-custom-close-button {
+    color: var(--cor-secundaria) !important; /* Cor do 'X' */
+    font-size: 1.5rem !important; /* Tamanho do 'X' */
+    top: 10px !important; /* Posição mais pra cima */
+    right: 10px !important; /* Posição mais pra direita */
+    transition: color 0.2s ease !important;
+}
+
+.swal2-custom-close-button:hover {
+    color: var(--cor-principal) !important; /* Rosa pastel no hover */
+}
+
+/* Ajuste do ícone de sucesso */
+.swal2-success .swal2-success-ring {
+    border-color: var(--cor-principal) !important;
+}
+.swal2-success .swal2-success-line-tip,
+.swal2-success .swal2-success-line-long {
+    background-color: var(--cor-secundaria) !important;
+}
